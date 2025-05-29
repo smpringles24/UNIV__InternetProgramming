@@ -1,0 +1,11 @@
+#search-bar{
+}
+
+#search-bar__keyword {
+  background-color: #cccccc;
+  border: none;
+}
+#search-bar__submit {
+  border: none;
+  font-weight: bold;
+}
