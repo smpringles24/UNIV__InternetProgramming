@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ page import="java.sql.*"%>
-<%@ page
-	import="myBean.DB.DbCon, java.util.*, myBean.Article, myBean.ArticleDAO"%>
+<%@ page import="myBean.DB.DbCon, java.util.*, myBean.article.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +49,7 @@
 						<td>(5)</td>
 					</tr>
 				</table>
+				<a href="./memoboard.jsp">메모보드 관리</a>
 				<div id="nav__login-section">
 					<form id="nav__login-form">
 						<div id="nav__login-form__user-data">
@@ -65,9 +65,9 @@
 						<div style="width: 10px"></div>
 						<input type="submit" value="로그인" id="nav__login-form__submit" />
 					</form>
-					<div style="height:10px"></div>
+					<div style="height: 10px"></div>
 					<span style="font-size: 12px">made by smpringles24@gmail.com</span>
-					<div style="height:5vh"></div>
+					<div style="height: 5vh"></div>
 				</div>
 			</div>
 		</nav>
@@ -100,7 +100,7 @@
 				for (Article a : articles) {
 					boolean isSecret = a.isSecret();
 					String title = isSecret ? "비밀글" : a.getTitle();
-					String link = isSecret ? title : "<a href='viewArticle?id=" + a.getId() + "'>" + title + "</a>";
+					String link = isSecret ? title : "<a href='memo_preview.jsp?id=" + a.getId() + "'>" + title + "</a>";
 					String importantMark = a.isImportant() ? "⭐" : "";
 					String viewCount = String.valueOf(a.getViewCount());
 					String createdAt = String.valueOf(a.getCreatedAt());
@@ -108,7 +108,7 @@
 				%>
 				<tr class="list-tile" style="background-color: <%=bgColor%>">
 					<td><%=a.getId()%></td>
-					<td><%=link%></td>
+					<td onclick="viewCountUp(<%=a.getId()%>)"><%=link%></td>
 					<td><%=importantMark%></td>
 					<td><%=viewCount%></td>
 					<td><%=createdAt%></td>
@@ -121,5 +121,6 @@
 			<a href="./new_memo.jsp">새 글 작성하기</a>
 		</main>
 	</div>
+	<script src="../js/view_count_up.js"></script>
 </body>
 </html>

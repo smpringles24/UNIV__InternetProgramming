@@ -1,4 +1,4 @@
-#new-memo-form {
+#new-memo__form {
   display: flex;
   flex-direction: column;
   padding: 30px;
@@ -11,4 +11,9 @@
   color: #ffffff;
   align-self: flex-end;
   border-radius: 8px;
+}
+.new-memo__form__col-container{
+	display: flex;
+	flex-direction: column;
+	width: 200px;
 }

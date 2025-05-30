@@ -1,0 +1,30 @@
+.memoboard-list-view {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 14px;
+	color: #333;
+	background-color: #fafafa;
+	border: 2px solid white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.memoboard-list-view th, .memoboard-list-view td {
+	padding: 12px 16px;
+	border: 2px solid white;
+}
+
+.memoboard-list-view tr:last-child {
+	background-color: #bbbbbb;
+}
+
+.memoboard-list-view tr:last-child:hover {
+	background-color: #666666;
+}
+.memoboard-cell__edit{
+	color: #990000;
+}
+.memoboard-cell__delete{
+	color: red;
+}

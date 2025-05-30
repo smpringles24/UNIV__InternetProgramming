@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
-<%@ page import="myBean.Article"%>
-<%@ page import="myBean.ArticleDAO"%>
+<%@ page import="myBean.article.*"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,33 +18,6 @@
 <title>인터넷 프로그래밍</title>
 </head>
 <body>
-	<%
-	String submit = request.getParameter("new-memo-submit");
-	if (submit != null) {
-		String title = request.getParameter("name");
-		String content = request.getParameter("content");
-		String importantStr = request.getParameter("important");
-		String secretStr = request.getParameter("secret");
-		String bgColor = request.getParameter("bgColor");
-
-		Article newArticle = new Article();
-		newArticle.setTitle(title);
-		newArticle.setContent(content);
-		newArticle.setImportant(importantStr != null);
-		newArticle.setSecret(secretStr != null);
-		newArticle.setArticleboardId(1);
-		newArticle.setBgColor(bgColor);
-
-		ArticleDAO dao = new ArticleDAO();
-		int result = dao.insertArticle(newArticle);
-
-		if (result > 0) {
-			response.sendRedirect("main.jsp");
-		} else {
-			out.println("❌ 글 저장 실패");
-		}
-	}
-	%>
 	<div class="main-frame">
 		<nav>
 			<h2>Memo Master</h2>
@@ -85,17 +58,22 @@
 			</div>
 		</nav>
 		<main>
-			<div style="display:flex">
+			<div class="header">
 				<h1>메모 작성</h1>
 				<a href="main.jsp">메인화면</a>
 			</div>
-			<form id="new-memo-form" method="post">
-				<label for="name">제목 *</label> <input type="text" id="name"
-					name="name" /> <label for="board">메모 보드 선택 *</label> <select
-					id="board" name="board">
-					<option value="1">메모보드_01</option>
-					<option value="2">메모보드_02</option>
-				</select>
+			<form id="new-memo__form" action="../crud/article_insert.jsp" method="post">
+				<div class="new-memo__form__col-container">
+					<label for="name">제목 *</label> 
+					<input type="text" id="name" name="name" />
+				</div>
+				<div class="new-memo__form__col-container">
+					<label for="board">메모 보드 선택 *</label> <select id="board"
+						name="board">
+						<option value="1">메모보드_01</option>
+						<option value="2">메모보드_02</option>
+					</select>
+				</div>
 				<div class="row-container">
 					<label for="bgColor">배경색</label> <input type="color" id="bgColor"
 						name="bgColor" value="#ffffff" />

@@ -1,4 +1,4 @@
-package myBean;
+package myBean.article;
 
 import java.sql.*;
 import java.util.ArrayList;
